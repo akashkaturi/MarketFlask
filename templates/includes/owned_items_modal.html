@@ -1,0 +1,50 @@
+
+<style>
+  .modal-content {
+    background-color: #212121;
+  }
+</style>
+<!-- Sell Info -->
+
+<div
+  class="modal fade"
+  id="sell-{{sold_item.id}}"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="sellLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="sellLabel">{{sold_item.name}}</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">
+          {{sell_form.hidden_tag()}}
+          <h4 class="text-center">
+            Are you sure you want to buy {{sold_item.name}} for ${{sold_item.price}}?
+          </h4 >
+          <br/>
+          <h6 class="text-center">By clicking purchase you will purchase this item.</h6>
+          <br/>
+          <input id="sold_item" name="sold_item" type="hidden" value="{{sold_item.name}}"/>
+          {{sell_form.submit(class="btn btn-block btn-outline-danger")}}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div> 

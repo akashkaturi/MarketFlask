@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block title %} Market Page {% endblock %} {% block
+content %} 
+<h1 class="d-flex justify-content-center">Market Page</h1>
+<div class="row" style="margin-top: 20px; margin-left: 20px">
+  <div class="col-8">
+    <h2>Available Items on the market</h2>
+    <h6>Click on Purchase to start Purchasing</h6>
+    <table class="table table-hover table-dark">
+      <thead>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Barcode</th>
+        <th scope="col">Price</th>
+        <th scope="col">Options</th>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        {% include 'includes/modal.html' %}
+        <tr>
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.barcode}}</td>
+          <td>{{item.price}}$</td>
+          <td>
+            <button
+              class="btn btn-info btn-outline"
+              data-toggle="modal"
+              data-target="#moreInfo-{{item.id}}"
+            >
+              More Info
+            </button>
+            <button class="btn btn-success btn-outline"
+            data-toggle="modal"
+            data-target="#purchase-{{item.id}}"
+            >Purchase This</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    <h2>Owned Items</h2>
+    <h6>Click on sell items to put it back on the market</h6>
+    <table class="table table-hover table-dark">
+      <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+      </thead>
+      <tbody>
+        {% for sold_item in owned_list %}
+        {% include 'includes/owned_items_modal.html' %}
+        <tr>
+          <td>{{sold_item.name}}</td>
+          <td>{{sold_item.price}}$</td>
+          <td>
+            <button class="btn btn-sm btn-danger btn-outline"
+            data-toggle="modal"
+            data-target="#sell-{{sold_item.id}}"
+            >Sell</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
