@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %} {% block title %} Register Form {% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center " >
+<form method='post'>
+    {{ form.hidden_tag() }}
+    <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/08/learn-coding-online-for-free.webp" alt="code image" class="mb-4 mt-4" width="400px"/>
+    <h1 class="h3 mb-3 font-weight-normal">
+        Please Create your account
+    </h1>
+    {{form.username.label().title()}}
+    {{form.username(class='form-control',placeholder="User Name")}}
+    {{form.email.label().title()}}
+    {{form.email(class='form-control',placeholder="Email")}}
+    {{form.password1.label().title()}}
+    {{form.password1(class='form-control',placeholder="Password")}}
+    {{form.password2.label().title()}}
+    {{form.password2(class='form-control',placeholder="Enter Password again")}}
+    <br/>
+    {{ form.submit(class='btn btn-lg btn-block btn-primary mt-2') }}
+     <div class="checkbox mb-3 d-flex align-items-center flex-column m-3">
+        <h6>Already have an account?</h6>
+        <a class="btn btn-sm btn-secondary" href="{{url_for('login_page')}}">Login</a>
+    </div>
+</form>
+
+</div>
+{% endblock %}

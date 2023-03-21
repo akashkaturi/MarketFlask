@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %} Home Page {% endblock %} {% block
+content %}
+<div class="container col-md-6 d-flex align-items-center flex-column">
+  <h1>Hello World!</h1>
+  <h4>Register to get started</h4>
+  <a
+    class="btn btn-outline-primary btn-block btn-lg"
+    href="{{url_for('register_page')}}"
+    >Get Started</a
+  >
+  <h4>Already have an account?</h4>
+  <a
+    class="btn btn-outline-primary btn-block btn-lg"
+    href="{{url_for('login_page')}}"
+    >Login</a
+  >
+</div>
+
+{% endblock %}
